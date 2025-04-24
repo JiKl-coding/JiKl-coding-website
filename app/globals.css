@@ -3,13 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #010a02;
-  --link: #f30000;
+  --link: #945757;
 }
 
 .dark {
   --background: #010a02;
   --foreground: #ededed;
-  --link: #f30000;
+  --link: #c98383;
 }
 
 @media (prefers-color-scheme: dark) {
