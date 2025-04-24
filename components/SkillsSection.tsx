@@ -18,7 +18,7 @@ export default function SkillsSection() {
   return (
     <section className="py-16 border rounded-sm border-[var(--foreground)]) scroll-mt-[120px]" id="skills">    
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 underline text-center">Tech-stack</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 underline text-center uppercase">Tech-stack</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {techStack.map((tech) => (
             <div

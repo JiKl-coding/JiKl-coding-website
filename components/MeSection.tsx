@@ -34,7 +34,7 @@ const MeSection = () => {
       className="max-w-7xl mx-auto px-6 py-8 text-center scroll-mt-[120px]"
     >
       <h2
-        className={`text-3xl sm:text-4xl font-bold mb-6 underline transition-all duration-1000 ease-out will-change-transform ${
+        className={`uppercase text-3xl sm:text-4xl font-bold mb-6 underline transition-all duration-1000 ease-out will-change-transform ${
           visible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
         }`}
       >

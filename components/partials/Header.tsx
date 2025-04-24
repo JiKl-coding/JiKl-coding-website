@@ -18,10 +18,10 @@ const Header = () => {
         <div className="hidden lg:flex items-center gap-4">
             <HeaderToggle locale={locale as string} />
             <nav className="flex gap-4 font-semibold text-2xl">
-            <a href="#me" className="hover:underline">{t.me}</a>
-            <a href="#skills" className="hover:underline">{t.skills}</a>
-            <a href="#projects" className="hover:underline">{t.projects}</a>
-            <a href="#contact" className="hover:underline">{t.contact}</a>
+                <a href="#me" className="hover:underline">{t.nav.me}</a>
+                <a href="#skills" className="hover:underline">{t.nav.skills}</a>
+                <a href="#projects" className="hover:underline">{t.nav.projects}</a>
+                <a href="#contact" className="hover:underline">{t.nav.contact}</a>
             </nav>
         </div>
 
@@ -42,10 +42,10 @@ const Header = () => {
             >
                 <div className="flex flex-col items-center gap-4">
                     <HeaderToggle locale={locale as string} />
-                    <a href="#me" onClick={() => setIsMenuOpen(false)}>{t.me}</a>
-                    <a href="#skills" onClick={() => setIsMenuOpen(false)}>{t.skills}</a>
-                    <a href="#projects" onClick={() => setIsMenuOpen(false)}>{t.projects}</a>
-                    <a href="#contact" onClick={() => setIsMenuOpen(false)}>{t.contact}</a>
+                    <a href="#me" onClick={() => setIsMenuOpen(false)}>{t.nav.me}</a>
+                    <a href="#skills" onClick={() => setIsMenuOpen(false)}>{t.nav.skills}</a>
+                    <a href="#projects" onClick={() => setIsMenuOpen(false)}>{t.nav.projects}</a>
+                    <a href="#contact" onClick={() => setIsMenuOpen(false)}>{t.nav.contact}</a>
                 </div>
             </div>
         )}
