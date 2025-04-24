@@ -28,7 +28,8 @@ const middleware = (request: NextRequest) => {
   
   export default middleware
 
-// Matcher: aktivuje middleware pro všechny route kromě statických věcí
 export const config = {
-  matcher: ['/((?!_next|api|favicon.ico).*)'],
+  matcher: [
+    '/((?!_next|api|favicon.ico|robots.txt|sitemap.xml|og-image.png).*)',
+  ],
 }
