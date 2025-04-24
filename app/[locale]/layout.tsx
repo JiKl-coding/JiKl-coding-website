@@ -1,3 +1,4 @@
+// app/[locale]/layout.tsx
 import { JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
@@ -12,6 +13,9 @@ const jetBrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const SERVER_URL = "https://jikl-coding.com";
+const APP_NAME = "JiKl-Coding";
+
 const locales = ["cs", "en"];
 
 const metadataByLocale = {
@@ -21,6 +25,7 @@ const metadataByLocale = {
       "Jsem Jirka – programátor, sportovec a stoik. Vyvíjím podnikové aplikace v Progress OpenEdge a moderní weby v Next.js, Reactu a Tailwindu.",
     keywords:
       "programátor, vývoj webu, webové stránky, React, Next.js, Tailwind, TypeScript, Supabase, Progress ABL, moderní aplikace, JiKl-Coding, software vývoj",
+    locale: "cs_CZ",
   },
   en: {
     title: "JiKl-Coding | I build websites and apps",
@@ -28,6 +33,7 @@ const metadataByLocale = {
       "I'm Jirka – programmer, athlete and stoic. I develop enterprise apps in Progress OpenEdge and modern websites with Next.js, React and Tailwind.",
     keywords:
       "developer, web development, websites, React, Next.js, Tailwind, TypeScript, Supabase, Progress ABL, modern apps, JiKl-Coding, software engineering",
+    locale: "en_US",
   },
 };
 
@@ -36,35 +42,32 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params; // <== TADY BYLO potřeba await
-
+  const { locale } = await params;
   const content = metadataByLocale[locale as "cs" | "en"] ?? metadataByLocale.cs;
-  const url = `https://jikl-coding.com/${locale}`;
+  const url = `${SERVER_URL}/${locale}`;
 
   return {
     title: content.title,
     description: content.description,
-    keywords: locale === "cs"
-      ? "programátor, vývoj webu, Next.js, React, Tailwind, TypeScript, Progress ABL, Supabase, moderní technologie"
-      : "developer, web development, Next.js, React, Tailwind, TypeScript, Progress ABL, Supabase, modern technologies",
-    metadataBase: new URL("https://jikl-coding.com"),
+    keywords: content.keywords,
+    metadataBase: new URL(SERVER_URL),
     alternates: {
       canonical: url,
       languages: {
-        cs: "https://jikl-coding.com/cs",
-        en: "https://jikl-coding.com/en",
+        cs: `${SERVER_URL}/cs`,
+        en: `${SERVER_URL}/en`,
       },
     },
     openGraph: {
       title: content.title,
       description: content.description,
       url,
-      siteName: "JiKl-Coding",
+      siteName: APP_NAME,
       type: "website",
-      locale,
+      locale: content.locale,
       images: [
         {
-          url: "/og-image.png",
+          url: `${SERVER_URL}/og-image.png`,
           width: 1200,
           height: 630,
           alt: content.title,
@@ -75,7 +78,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: content.title,
       description: content.description,
-      images: ["/og-image.png"],
+      images: [`${SERVER_URL}/og-image.png`],
     },
   };
 }
@@ -105,5 +108,5 @@ export default async function LocaleLayout({
 }
 
 export async function generateStaticParams() {
-  return [{ locale: 'cs' }, { locale: 'en' }]
+  return [{ locale: "cs" }, { locale: "en" }];
 }
