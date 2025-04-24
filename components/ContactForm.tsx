@@ -35,7 +35,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="w-full scroll-mt-[120px] px-4 max-w-2xl mx-auto">
+    <section id="contact" className="w-full scroll-mt-[120px] px-4 max-w-2xl mx-auto mb-16">
       <h2 className="text-3xl sm:text-4xl font-bold underline text-center uppercase mb-8">{t.nav.contact}</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input

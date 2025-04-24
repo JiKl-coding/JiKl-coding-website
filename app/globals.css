@@ -2,12 +2,12 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #010a02;
   --link: #f30000;
 }
 
 .dark {
-  --background: #0a0a0a;
+  --background: #010a02;
   --foreground: #ededed;
   --link: #f30000;
 }

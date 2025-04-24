@@ -60,10 +60,16 @@ export default function ProjectCard({
                   src={image}
                   alt={label}
                   fill
-                  className="object-cover rounded-sm group-hover:brightness-75 transition duration-300 ease-in-out"
+                  className="object-cover rounded-sm transition duration-300 ease-in-out
+                            lg:group-hover:brightness-75"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-white text-lg font-semibold">
+                <div
+                  className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold 
+                            transition-opacity duration-300
+                            lg:opacity-0 lg:group-hover:opacity-100
+                            bg-black/20"
+                >
+                  <span>
                     {isCzech ? 'Klikni na mě' : 'Click me'}
                   </span>
                 </div>
@@ -95,7 +101,7 @@ export default function ProjectCard({
           rel="noopener noreferrer">
           <h3 className="text-3xl font-bold mb-8 underline text-[var(--link)]">{label}</h3>
         </Link>
-        <p className="text-muted-foreground text-md sm:text-lg leading-relaxed">{description}</p>
+        <p className="text-muted-foreground text-lg sm:text-xl p-4 leading-relaxed">{description}</p>
       </div>
     </div>
   )

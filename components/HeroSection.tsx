@@ -26,12 +26,12 @@ const HeroSection = () => {
       >
         {/* Background */}
         <div
-          className="absolute inset-0 -z-10 bg-cover bg-center bg-fixed rounded-sm overflow-hidden max-w-6xl mx-auto"
+          className="absolute inset-0 -z-10 bg-cover bg-[center_15%] bg-fixed rounded-sm overflow-hidden max-w-6xl mx-auto"
           style={{
             backgroundImage: `url(${heroPhoto.src})`,
           }}
         >
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/15" />
         </div>
 
         {/* Foreground Text */}

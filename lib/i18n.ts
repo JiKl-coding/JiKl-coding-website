@@ -8,7 +8,7 @@ export const translations = {
     about: {
       title: "O mně",
       description:
-        "Vyvíjím podnikovou aplikaci pro pojišťovnu v prostředí Progress OpenEdge (ABL). Ve volném čase ale rád tvořím moderní webové stránky, vymýšlím zajímavé desgigny, a neustále se učím nové technologie – aktuálně se zaměřuji na Next.js, Tailwind a TypeScript. Mimo CS se věnuji především sportu a hudbě, studuji stoicismus a věnuji se svému pejskovi. V případě zájmu mě kontaktujte a můžeme se domluvit na spolupráci.",
+        "Vyvíjím podnikovou aplikaci pro pojišťovnu v prostředí Progress OpenEdge (ABL). Ve volném čase ale rád tvořím moderní webové stránky, vymýšlím zajímavé desgigny, a neustále se učím nové technologie – aktuálně se zaměřuji na Next.js, Tailwind a TypeScript. Mimo CS se věnuji především sportu a hudbě, studuji stoicismus a starám se o svého pejska. V případě zájmu mě kontaktujte a můžeme se domluvit na spolupráci.",
     },
     nav: {
       me: "já",

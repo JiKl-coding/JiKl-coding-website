@@ -42,7 +42,7 @@ export default function Page() {
   ]
 
   return (
-    <main className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen gap-32 px-1 mt-12">
+    <main className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen gap-64 px-1 mt-12">
       <HeroSection />
       <SkillsSection />
       <section id="projects" className="w-full scroll-mt-[120px] flex flex-col gap-24 justify-center items-center">
