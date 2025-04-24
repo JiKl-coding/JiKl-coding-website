@@ -29,18 +29,27 @@ const MeSection = () => {
   
 
   return (
-    <section
-      id="me"
-      ref={sectionRef}
-      className={`max-w-7xl mx-auto px-6 py-8 text-center md:text-center transform transition-all duration-2000 ease-out ${
-        visible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
-      }`}
-    >
-      <h2 className="text-3xl sm:text-4xl font-bold mb-6 underline">{t.about.title}</h2>
-      <p className="sm:text-xl text-md text-muted-foreground leading-relaxed">
-        {t.about.description}
-      </p>
-    </section>
+<section
+  id="me"
+  ref={sectionRef}
+  className="max-w-7xl mx-auto px-6 py-8 text-center md:text-center"
+>
+  <h2
+    className={`text-3xl sm:text-4xl font-bold mb-6 underline transition-all duration-1000 ease-out will-change-transform ${
+      visible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
+    }`}
+  >
+    {t.about.title}
+  </h2>
+  <p
+    className={`sm:text-xl text-md text-muted-foreground leading-relaxed transition-all duration-1000 ease-out will-change-transform ${
+      visible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
+    }`}
+  >
+    {t.about.description}
+  </p>
+</section>
+
   )
 }
 

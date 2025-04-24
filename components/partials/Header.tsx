@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 px-8 xl:px-32 flex justify-between items-center py-4 h-[100px] shadow-md shadow-gray-500/80 bg-[var(--background)]">
-        <div className="text-3xl sm:text-4xl font-black select-none">JiKl-Coding</div>
+        <div className="text-3xl sm:text-4xl font-black"><a href="#hero">JiKl-Coding</a></div>
 
         {/* Desktop only: nav + toggle */}
         <div className="hidden lg:flex items-center gap-4">

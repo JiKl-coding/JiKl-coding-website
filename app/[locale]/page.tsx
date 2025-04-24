@@ -1,6 +1,7 @@
 'use client'
 
 import HeroSection from '@/components/HeroSection'
+import SkillsSection from '@/components/SkillsSection'
 
 export default function Page() {
 
@@ -8,6 +9,7 @@ export default function Page() {
     <main className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen gap-4 px-1">
 
       <HeroSection />
+      <SkillsSection />
 
     </main>
   )
