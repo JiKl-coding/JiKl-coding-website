@@ -1,7 +1,7 @@
 'use client'
 
 import { translations } from "@/lib/i18n"
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa"
 
 const Footer = ({ locale }: { locale: "cs" | "en" }) => {
   const t = translations[locale]
@@ -37,6 +37,16 @@ const Footer = ({ locale }: { locale: "cs" | "en" }) => {
           >
             <FaInstagram />
           </a>
+          <a
+            href="mailto:jikl-coding@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Email"
+            className="hover:text-primary transition-colors duration-200"
+          >
+            <FaEnvelope />
+          </a>
+
         </div>
         <p className="text-lg font-semibold">
           &copy; {new Date().getFullYear()} JiKl-coding – {t.footer.rights}
