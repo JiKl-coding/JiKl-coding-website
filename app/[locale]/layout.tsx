@@ -24,7 +24,7 @@ const metadataByLocale = {
     description:
       "Jsem Jirka – programátor, sportovec a stoik. Vyvíjím podnikové aplikace v Progress OpenEdge a moderní weby v Next.js, Reactu a Tailwindu.",
     keywords:
-      "programátor, vývoj webu, webové stránky, React, Next.js, Tailwind, TypeScript, Supabase, Progress ABL, moderní aplikace, JiKl-Coding, software vývoj",
+      "Jiří Klatovský, Jirka Klatovský, Klatovský, Trojafotbal, Belamicookbook, Jindrichvosecky, stoicismus, webový design, programátor, vývoj webu, webové stránky, React, Next.js, Tailwind, TypeScript, Supabase, Progress ABL, moderní aplikace, JiKl-Coding, JiKl Coding, JiKl, software vývoj, vytvořím web, vytvořím aplikaci, backend, frontend, full-stack",
     locale: "cs_CZ",
   },
   en: {
@@ -32,7 +32,7 @@ const metadataByLocale = {
     description:
       "I'm Jirka – programmer, athlete and stoic. I develop enterprise apps in Progress OpenEdge and modern websites with Next.js, React and Tailwind.",
     keywords:
-      "developer, web development, websites, React, Next.js, Tailwind, TypeScript, Supabase, Progress ABL, modern apps, JiKl-Coding, software engineering",
+      "Jiri Klatovsky, Jirka Klatovsky, Klatovsky, Trojafotbal, Belamicookbook, Jindrichvosecky, stoicism, web design, developer, web development, websites, React, Next.js, Tailwind, TypeScript, Supabase, Progress ABL, modern apps, JiKl-Coding, JiKl Coding, JiKl, software engineering, create web, create application, backend, frontend, full-stack",
     locale: "en_US",
   },
 };
