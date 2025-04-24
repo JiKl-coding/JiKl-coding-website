@@ -1,6 +1,6 @@
 'use client'
 
-import ToggleButton from "@/components/ToggleButton"
+import ToggleButton from "@/components/partials/ToggleButton"
 
 type Props = {
     locale: string

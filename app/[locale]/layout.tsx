@@ -3,8 +3,8 @@ import { JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
 import "../globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/partials/Header";
+import Footer from "@/components/partials/Footer";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
