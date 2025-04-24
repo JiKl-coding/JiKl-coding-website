@@ -22,7 +22,7 @@ const HeroSection = () => {
       {/* Hero */}
       <section
         id="hero"
-        className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden text-white my-6"
+        className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden text-white"
       >
         {/* Background */}
         <div
