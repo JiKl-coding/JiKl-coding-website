@@ -80,8 +80,14 @@ export async function generateMetadata({
       description: content.description,
       images: [`${SERVER_URL}/og-image.png`],
     },
+    authors: [
+      { name: "Jiří Klatovský – JiKl-Coding", url: "https://jikl-coding.com" },
+    ],
+    publisher: "Jiří Klatovský – JiKl-Coding",
+    creator: "Jiří Klatovský – JiKl-Coding",
   };
 }
+
 
 export default async function LocaleLayout({
   children,
