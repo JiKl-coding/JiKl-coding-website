@@ -28,8 +28,9 @@ const middleware = (request: NextRequest) => {
   
   export default middleware
 
-export const config = {
-  matcher: [
-    '/((?!_next|api|favicon.ico|robots.txt|sitemap.xml|og-image.png).*)',
-  ],
-}
+  export const config = {
+    matcher: [
+      '/((?!_next|api|favicon.ico|robots.txt|sitemap.*\\.xml|og-image.png).*)',
+    ],
+  }
+  
