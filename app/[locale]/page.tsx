@@ -12,6 +12,7 @@ import cookbook from "@/public/projects/belamicookbook.webp"
 
 import ContactForm from '@/components/ContactForm'
 
+/*
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -50,6 +51,9 @@ export const metadata: Metadata = {
   publisher: 'Jiří Klatovský – JiKl-Coding',
 }
 
+
+*/
+
 export default function Page() {
   const { locale } = useParams()
   const t = translations[locale as 'cs' | 'en'] ?? translations.cs
@@ -78,6 +82,7 @@ export default function Page() {
       stackDesc: t.projects.cookbook.stack,
     }
   ]
+
 
   return (
     <main className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen gap-64 px-1 mt-12">
