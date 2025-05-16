@@ -23,7 +23,7 @@ export default function SkillsSection() {
           {techStack.map((tech) => (
             <div
               key={tech.name}
-              className="flex flex-col items-center justify-center p-4 rounded-xl shadow bg-white dark:bg-gray-800 hover:scale-105 transition-transform hover-wiggle select-none"
+              className="flex flex-col items-center justify-center p-4 rounded-xl shadow-md shadow-gray-500/40 bg-white dark:bg-gray-800 hover:scale-105 transition-transform hover-wiggle select-none"
             >
               <div className="text-4xl mb-2 text-gray-800 dark:text-white">{tech.icon}</div>
               <span className="text-sm font-medium text-center text-gray-900 dark:text-white">{tech.name}</span>

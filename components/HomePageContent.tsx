@@ -41,7 +41,7 @@ export default function HomePageContent({ t }: { t: Translation }) {
   };
 
   return (
-    <main className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen gap-64 px-1 mt-12">
+    <main className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen gap-64 px-1 mt-[150px]">
       <HeroSection />
 
       {/* Invisible SEO text */}

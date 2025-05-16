@@ -7,7 +7,7 @@ const Footer = ({ locale }: { locale: "cs" | "en" }) => {
   const t = translations[locale]
 
   return (
-    <footer className="py-6 text-center min-h-[60px] border-t border-[var(--foreground)]/30 mt-12">
+    <footer className="py-6 text-center min-h-[60px] border-t border-[var(--foreground)]/30 mt-[150px]">
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="flex gap-4 text-4xl text-[var(--foreground)]">
           <a

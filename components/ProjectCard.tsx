@@ -39,7 +39,7 @@ export default function ProjectCard({
   return (
     <div
       className={clsx(
-        'w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 items-center',
+        'w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 items-center ',
         !layout && 'lg:flex-row-reverse'
       )}
     >
@@ -55,7 +55,7 @@ export default function ProjectCard({
           )}
         >
           {/* Front */}
-          <div className="absolute inset-0 rounded-sm overflow-hidden [backface-visibility:hidden]">
+          <div className="shadow-md shadow-gray-500/40 absolute inset-0 rounded-sm overflow-hidden [backface-visibility:hidden]">
             {!flipped && (
               <>
                 <Image
