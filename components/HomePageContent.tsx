@@ -35,18 +35,18 @@ export default function HomePageContent({ t }: { t: Translation }) {
     },
   ];
 
+  const hiddenText = {
+    cs: `Jsem Jiří Klatovský – webový vývojář, programátor a tvůrce aplikací na míru. Pomáhám firmám a jednotlivcům tvořit moderní weby v Reactu, Next.js, Tailwind CSS a Supabase. Nabízím vývoj na míru, přístupné weby, optimalizaci výkonu i integraci backendových řešení.`,
+    en: `I'm Jiří Klatovský – web developer, programmer and creator of custom apps. I help businesses and individuals build modern websites using React, Next.js, Tailwind CSS and Supabase. I offer tailor-made development, accessible design, performance optimization and backend integrations.`,
+  };
+
   return (
     <main className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen gap-64 px-1 mt-12">
       <HeroSection />
 
-      {/* Neviditelný SEO text */}
+      {/* Invisible SEO text */}
       <section aria-hidden="true" className="sr-only">
-        <p>
-          Jsem Jiří Klatovský – webový vývojář, programátor a tvůrce
-          aplikací na míru. Pomáhám firmám a jednotlivcům tvořit moderní weby
-          v Reactu, Next.js, Tailwind CSS a Supabase. Nabízím vývoj na míru,
-          přístupné weby, optimalizaci výkonu i integraci backendových řešení.
-        </p>
+        <p>{hiddenText[t.nav.contact === 'kontakt' ? 'cs' : 'en']}</p>
       </section>
 
       <SkillsSection />
