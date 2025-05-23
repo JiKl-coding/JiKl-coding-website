@@ -33,6 +33,11 @@ export const translations = {
     contact: "kontakt",
     footer: {
       rights: "Všechna práva vyhrazena.",
+      terms: "Obchodní podmínky",
+      cookies: "Tato stránka nevyužívá soubory cookies",
+      address: "Sídlo",
+      tradeRegister: "Zapsán v živnostenském rejstříku vedeném ÚMČ Praha 13",
+      vat: "Nejsem plátcem DPH",
     },
   },
   en: {
@@ -69,6 +74,11 @@ export const translations = {
     contact: "contact",
     footer: {
       rights: "All rights reserved.",
+      terms: "Terms of Service",
+      cookies: "This website does not use cookies",
+      address: "Registered office",
+      tradeRegister: "Registered in the Trade Register maintained by Prague 13 District Office",
+      vat: "Not a VAT payer",
     },
   },
 } as const;
