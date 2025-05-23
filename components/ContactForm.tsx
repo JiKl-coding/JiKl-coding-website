@@ -67,10 +67,10 @@ export default function ContactForm() {
         />
         <button
           type="submit"
-          className="relative overflow-hidden self-center px-6 py-2 font-semibold border rounded cursor-pointer text-[var(--foreground)] border-[var(--foreground)] transition-all duration-300 ease-in-out
-                     before:absolute before:inset-0 before:translate-y-[-100%] before:bg-[var(--foreground)]
+          className="relative overflow-hidden self-center px-6 py-2 font-semibold border rounded cursor-pointer bg-[var(--foreground)] text-[var(--background)] border-[var(--background)] transition-all duration-300 ease-in-out
+                     before:absolute before:inset-0 before:translate-y-[-100%] before:bg-[var(--background)]
                      hover:before:translate-y-0 before:transition-transform before:duration-300
-                     hover:text-[var(--background)]"
+                     hover:text-[var(--foreground)] hover:border-[var(--foreground)]"
           disabled={status === 'sending'}
         >
           <span className="relative z-10">

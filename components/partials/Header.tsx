@@ -65,6 +65,7 @@ const Header = () => {
         <HeaderToggle locale={locale as string} />
         <nav className="flex gap-4 font-semibold text-2xl">
           <a href="#me" className="hover:underline">{t.nav.me}</a>
+          <a href="#services" className="hover:underline">{t.nav.services}</a>
           <a href="#skills" className="hover:underline">{t.nav.skills}</a>
           <a href="#projects" className="hover:underline">{t.nav.projects}</a>
           <a href="#contact" className="hover:underline">{t.nav.contact}</a>
@@ -90,6 +91,7 @@ const Header = () => {
           <div className="flex flex-col items-center gap-4">
             <HeaderToggle locale={locale as string} />
             <a href="#me" onClick={() => setIsMenuOpen(false)}>{t.nav.me}</a>
+            <a href="#services" onClick={() => setIsMenuOpen(false)}>{t.nav.services}</a>
             <a href="#skills" onClick={() => setIsMenuOpen(false)}>{t.nav.skills}</a>
             <a href="#projects" onClick={() => setIsMenuOpen(false)}>{t.nav.projects}</a>
             <a href="#contact" onClick={() => setIsMenuOpen(false)}>{t.nav.contact}</a>

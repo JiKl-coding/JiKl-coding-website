@@ -1,7 +1,7 @@
 export const translations = {
   cs: {
     hero: {
-      title: "Vítej na JiKl-Coding",
+      title: "Vítejte na JiKl-Coding",
       description:
         "Já jsem Jirka, programátor, sportovec, stoik a člověk, co se nikdy nevzdává – ani na tréninku.",
     },
@@ -12,9 +12,25 @@ export const translations = {
     },
     nav: {
       me: "já",
+      services: "služby",
       skills: "dovednosti",
       projects: "projekty",
       contact: "kontakt"
+    },
+    services: {
+      title: "Služby",
+      subtitle: "Co nabízím?",
+      items: [
+      "🛠️ Weby a design na míru – bez šablon",
+      "🧑‍💻 Vlastní rozhraní pro správu obsahu",
+      "🗄️ Napojení na databázi a backend (např. Supabase)",
+      "🌐 Zajištění hostingu (Vercel) a správa domény",
+      "⚙️ Základní SEO a optimalizace výkonu",
+      "🎨 Vlastní ikony a UI prvky",
+      "🔄 Dlouhodobá správa webu dle dohody",
+      "📞 Úvodní konzultace zdarma"
+    ],
+      contactNote: "Sídlím v Praze, spolupráci však nabízím i plně na dálku. V případě zájmu mě prosím kontaktujte – rád s Vámi nezávazně prodiskutuji Vaše potřeby."
     },
     projects: {
       troja: {
@@ -53,10 +69,26 @@ export const translations = {
     },
     nav: {
       me: "me",
+      services: "services",
       skills: "skills",
       projects: "projects",
       contact: "contact"
     },
+    services: {
+    title: "Services",
+    subtitle: "What I offer?",
+    items: [
+      "🛠️ Custom websites and design – no templates",
+      "🧑‍💻 Admin interface for content management",
+      "🗄️ Database and backend integration (e.g. Supabase)",
+      "🌐 Hosting setup (Vercel) and domain management",
+      "⚙️ Basic SEO and performance tuning",
+      "🎨 Custom icons and UI elements",
+      "🔄 Ongoing site maintenance on request",
+      "📞 Free consultation and project review"
+    ],
+    contactNote: "Based in Prague, but fully available for remote projects as well. If interested, feel free to get in touch – I will be happy to discuss your needs with you."
+  },
     projects: {
       troja: {
         description: "Website of the Prague football club TJ Sokol Troja, which I built with my friend Tadeáš. It has its own admin panel for managing data and publishing articles.",

@@ -2,6 +2,7 @@ import HeroSection from '@/components/HeroSection';
 import ProjectCard from '@/components/ProjectCard';
 import SkillsSection from '@/components/SkillsSection';
 import ContactForm from '@/components/ContactForm';
+import ServicesSection from './ServicesSection';
 import { translations } from '@/lib/i18n';
 type Translation = (typeof translations)[keyof typeof translations];
 
@@ -48,6 +49,8 @@ export default function HomePageContent({ t }: { t: Translation }) {
       <section aria-hidden="true" className="sr-only">
         <p>{hiddenText[t.nav.contact === 'kontakt' ? 'cs' : 'en']}</p>
       </section>
+
+      <ServicesSection />
 
       <SkillsSection />
 
