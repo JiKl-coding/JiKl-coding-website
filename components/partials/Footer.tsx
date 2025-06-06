@@ -41,7 +41,7 @@ const Footer = ({ locale }: { locale: "cs" | "en" }) => {
             <FaInstagram />
           </a>
           <a
-            href="mailto:jikl.coding@gmail.com"
+            href="mailto:jirka@jikl-coding.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Email"
