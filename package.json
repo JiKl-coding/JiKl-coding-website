@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@jikl/lib": "github:JiKl-coding/jikl-lib",
     "clsx": "^2.1.1",
     "cookies-next": "^5.1.0",
     "next": "15.3.1",
