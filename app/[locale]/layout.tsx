@@ -8,7 +8,7 @@ import Footer from "@/components/partials/Footer";
 import { getPersonStructuredData } from "@/lib/seo/structuredData";
 import { getLocalizedMetadata } from "@/lib/seo/metadata";
 import type { Metadata } from "next";
-import { CookieBar } from "@jikl/lib";
+import { CookieBar, GtagInitScript } from "@jikl/lib";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
@@ -58,6 +58,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+       <head>
+        <GtagInitScript gtagId={gaTrackingId} />
+      </head>
       <body className={`${jetBrainsMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
