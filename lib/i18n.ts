@@ -44,6 +44,10 @@ export const translations = {
       cookbook: {
         description: "Moje webová kuchařka napsaná jako projekt pro radost. Rád totiž vařím.",
         stack: "HTML, CSS, Vanilla JS...",
+      },
+      valerie: {
+        description: "Webová stránka výživářky a fitness trenérky Valerie, prezentující její služby.",
+        stack: "Next.js, React, Tailwind CSS, TypeScript...",
       }
     },
     contact: "kontakt",
@@ -101,6 +105,10 @@ export const translations = {
       cookbook: {
         description: "My personal cooking website created as a fun project. I simply love to cook.",
         stack: "HTML, CSS, Vanilla JS...",
+      },
+      valerie: {
+        description: "Website of the nutritionist and fitness trainer Valerie, showcasing her services.",
+        stack: "Next.js, React, Tailwind CSS, TypeScript...",
       }
     },
     contact: "contact",

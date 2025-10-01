@@ -9,6 +9,7 @@ type Translation = (typeof translations)[keyof typeof translations];
 import jindrich from '@/public/projects/jindrichvosecky.webp';
 import troja from '@/public/projects/trojafotbal.webp';
 import cookbook from '@/public/projects/belamicookbook.webp';
+import valerie from '@/public/projects/valeriewendlerova.webp';
 
 export default function HomePageContent({ t }: { t: Translation }) {
   const projects = [
@@ -20,20 +21,28 @@ export default function HomePageContent({ t }: { t: Translation }) {
       stackDesc: t.projects.troja.stack,
     },
     {
+      label: 'valeriefitness.cz',
+      image: valerie,
+      layout: false,
+      href: 'https://www.valeriefitness.cz/',
+      description: t.projects.valerie.description,
+      stackDesc: t.projects.valerie.stack,
+    },
+    {
       label: 'jindrichvosecky.com',
       image: jindrich,
       href: 'https://www.jindrichvosecky.com',
-      layout: false,
       description: t.projects.jindrich.description,
       stackDesc: t.projects.jindrich.stack,
     },
     {
       label: 'belamicookbook.cz',
       image: cookbook,
+      layout: false,
       href: 'https://www.belamicookbook.cz',
       description: t.projects.cookbook.description,
       stackDesc: t.projects.cookbook.stack,
-    },
+    }
   ];
 
   const hiddenText = {
