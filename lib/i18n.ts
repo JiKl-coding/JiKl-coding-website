@@ -33,6 +33,10 @@ export const translations = {
       contactNote: "Sídlím v Praze, spolupráci však nabízím i plně na dálku. V případě zájmu mě prosím kontaktujte – rád s Vámi nezávazně prodiskutuji Vaše potřeby."
     },
     projects: {
+      calorinator: {
+        description: "Webová aplikace pro sledování kalorií a správu jídelníčku. Umožňuje evidovat jídla, zakládat šablony, prohlížet databázi potravin a exportovat data do PDF. Obsahuje uživatelské účty a administrátorský panel.",
+        stack: "Next.js, React, Tailwind CSS, TypeScript, Supabase, Prisma...",
+      },
       troja: {
         description: "Webová stránka pražského fotbalového klubu TJ Sokol Troja, kterou jsem napsal se svým kamarádem Tadeášem. Disponuje vlastním adminem pro správu dat a psaní článků.",
         stack: "Next.js, React, Tailwind CSS, TypeScript, Supabase, Prisma...",
@@ -94,6 +98,10 @@ export const translations = {
     contactNote: "Based in Prague, but fully available for remote projects as well. If interested, feel free to get in touch – I will be happy to discuss your needs with you."
   },
     projects: {
+      calorinator: {
+        description: "A web app for calorie tracking and meal management. Users can log meals, create templates, browse a food database and export data to PDF. Includes user accounts and an admin panel.",
+        stack: "Next.js, React, Tailwind CSS, TypeScript, Supabase, Prisma...",
+      },
       troja: {
         description: "Website of the Prague football club TJ Sokol Troja, which I built with my friend Tadeáš. It has its own admin panel for managing data and publishing articles.",
         stack: "Next.js, React, Tailwind CSS, TypeScript, Supabase, Prisma...",

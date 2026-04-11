@@ -10,12 +10,21 @@ import jindrich from '@/public/projects/jindrichvosecky.webp';
 import troja from '@/public/projects/trojafotbal.webp';
 import cookbook from '@/public/projects/belamicookbook.webp';
 import valerie from '@/public/projects/valeriewendlerova.webp';
+import calorinator from '@/public/projects/calorinator.webp';
 
 export default function HomePageContent({ t }: { t: Translation }) {
   const projects = [
     {
+      label: 'calorinator.eu',
+      image: calorinator,
+      href: 'https://www.calorinator.eu',
+      description: t.projects.calorinator.description,
+      stackDesc: t.projects.calorinator.stack,
+    },
+    {
       label: 'trojafotbal.cz',
       image: troja,
+      layout: false,
       href: 'https://www.trojafotbal.cz',
       description: t.projects.troja.description,
       stackDesc: t.projects.troja.stack,
@@ -23,7 +32,6 @@ export default function HomePageContent({ t }: { t: Translation }) {
     {
       label: 'valeriefitness.cz',
       image: valerie,
-      layout: false,
       href: 'https://www.valeriefitness.cz/',
       description: t.projects.valerie.description,
       stackDesc: t.projects.valerie.stack,
@@ -31,6 +39,7 @@ export default function HomePageContent({ t }: { t: Translation }) {
     {
       label: 'jindrichvosecky.com',
       image: jindrich,
+      layout: false,
       href: 'https://www.jindrichvosecky.com',
       description: t.projects.jindrich.description,
       stackDesc: t.projects.jindrich.stack,
