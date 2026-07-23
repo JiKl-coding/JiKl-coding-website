@@ -47,7 +47,6 @@ export default function HomePageContent({ t }: { t: Translation }) {
     {
       label: 'belamicookbook.cz',
       image: cookbook,
-      layout: false,
       href: 'https://www.belamicookbook.cz',
       description: t.projects.cookbook.description,
       stackDesc: t.projects.cookbook.stack,
