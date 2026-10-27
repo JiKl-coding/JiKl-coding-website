@@ -8,7 +8,7 @@ export const translations = {
     about: {
       title: "O mně",
       description:
-        "Vyvíjím podnikovou aplikaci pro pojišťovnu v prostředí Progress OpenEdge (ABL). Ve volném čase ale rád tvořím moderní webové stránky, vymýšlím zajímavé desgigny, a neustále se učím nové technologie – aktuálně se zaměřuji na Next.js, Tailwind a TypeScript. Mimo CS se věnuji především sportu a hudbě, studuji stoicismus a starám se o svého pejska. V případě zájmu mě kontaktujte a můžeme se domluvit na spolupráci.",
+        "Vyvíjím podnikovou aplikaci pro pojišťovnu v prostředí Progress OpenEdge (ABL). Ve volném čase ale rád tvořím moderní webové stránky, vymýšlím zajímavé desgigny, a neustále se učím nové technologie – aktuálně se zaměřuji na Next.js/Vite, Tailwind a TypeScript. Mimo CS se věnuji především sportu a hudbě, studuji stoicismus a starám se o svého pejska. V případě zájmu mě kontaktujte a můžeme se domluvit na spolupráci.",
     },
     nav: {
       me: "já",
@@ -21,15 +21,19 @@ export const translations = {
       title: "Služby",
       subtitle: "Co nabízím?",
       items: [
-      "🛠️ Weby a design na míru – bez šablon",
-      "🧑‍💻 Vlastní rozhraní pro správu obsahu",
-      "🗄️ Napojení na databázi a backend (např. Supabase)",
-      "🌐 Zajištění hostingu (Vercel) a správa domény",
-      "⚙️ Základní SEO a optimalizace výkonu",
-      "🎨 Vlastní ikony a UI prvky",
-      "🔄 Dlouhodobá správa webu dle dohody",
-      "📞 Úvodní konzultace zdarma"
-    ],
+        "🛠️ Weby a design na míru – bez šablon",
+        "💻 Webové aplikace, zákaznické a interní portály",
+        "⚡ Automatizace opakovaných úkolů a skripty na míru",
+        "🔗 Propojení systémů a externích služeb přes API",
+        "🧑‍💻 Správa obsahu, uživatelských účtů a oprávnění",
+        "🗄️ Napojení na databáze a backend",
+        "🧭 Návrh technického řešení a konzultace",
+        "🎨 Vlastní ikony a UI prvky",
+        "⚙️ Základní SEO a optimalizace výkonu",
+        "🌐 Zajištění hostingu a správa domény",
+        "🔄 Dlouhodobá správa a rozvoj webů i aplikací",
+        "📞 Úvodní konzultace zdarma"
+      ],
       contactNote: "Sídlím v Praze, spolupráci však nabízím i plně na dálku. V případě zájmu mě prosím kontaktujte – rád s Vámi nezávazně prodiskutuji Vaše potřeby."
     },
     projects: {
@@ -73,7 +77,7 @@ export const translations = {
     about: {
       title: "About Me",
       description:
-        "I develop an enterprise application for an insurance company using Progress OpenEdge (ABL). In my free time, I enjoy creating modern websites, coming up with interesting designs, and continuously learning new technologies – currently focusing on Next.js, Tailwind, and TypeScript. Outside of computer science, I dedicate myself mainly to sports and music, I study stoicism, and take care of my dog. If you're interested, feel free to contact me and we can discuss working together."
+        "I develop an enterprise application for an insurance company using Progress OpenEdge (ABL). In my free time, I enjoy creating modern websites, coming up with interesting designs, and continuously learning new technologies – currently focusing on Next.js/Vite, Tailwind, and TypeScript. Outside of computer science, I dedicate myself mainly to sports and music, I study stoicism, and take care of my dog. If you're interested, feel free to contact me and we can discuss working together."
     },
     nav: {
       me: "me",
@@ -83,18 +87,22 @@ export const translations = {
       contact: "contact"
     },
     services: {
-    title: "Services",
-    subtitle: "What I offer?",
-    items: [
-      "🛠️ Custom websites and design – no templates",
-      "🧑‍💻 Admin interface for content management",
-      "🗄️ Database and backend integration (e.g. Supabase)",
-      "🌐 Hosting setup (Vercel) and domain management",
-      "⚙️ Basic SEO and performance tuning",
-      "🎨 Custom icons and UI elements",
-      "🔄 Ongoing site maintenance on request",
-      "📞 Free consultation and project review"
-    ],
+      title: "Services",
+      subtitle: "What do I offer?",
+      items: [
+        "🛠️ Custom websites and design – no templates",
+        "💻 Web apps and portals",
+        "⚡ Task automation and custom scripts",
+        "🔗 API and system integration",
+        "🧑‍💻 Content, users and permissions",
+        "🗄️ Database and backend integration",
+        "🧭 Technical solution design and consulting",
+        "🎨 Custom icons and UI elements",
+        "⚙️ Basic SEO and performance optimization",
+        "🌐 Hosting setup and domain management",
+        "🔄 Ongoing maintenance and updates",
+        "📞 Free initial consultation"
+      ],
     contactNote: "Based in Prague, but fully available for remote projects as well. If interested, feel free to get in touch – I will be happy to discuss your needs with you."
   },
     projects: {

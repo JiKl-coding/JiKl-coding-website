@@ -59,21 +59,21 @@ const Footer = ({ locale }: { locale: "cs" | "en" }) => {
           <p>&copy; {year} JiKl-coding – {t.footer.rights}</p>
 
           <Link
-            href={locale === "cs" ? "/docs/obchodni-podminky.pdf" : "/docs/terms-of-service.pdf"}
+            href={`/${locale}/terms-of-service`}
             className="hover:underline font-bold"
-            target="_blank"
+
             rel="noopener noreferrer"
           >
             {locale === "cs" ? "Obchodní podmínky" : "Terms of Service"}
           </Link>
 
           <Link
-            href={locale === "cs" ? "/docs/gdpr.pdf" : "/docs/privacy-policy.pdf"}
+            href={`/${locale}/privacy-policy`}
             className="hover:underline font-bold"
-            target="_blank"
+
             rel="noopener noreferrer"
           >
-            GDPR
+            {locale === "cs" ? "Ochrana osobních údajů" : "Privacy Policy"}
           </Link>
         </div>
 
