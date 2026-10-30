@@ -8,7 +8,6 @@ type Translation = (typeof translations)[keyof typeof translations];
 
 import jindrich from '@/public/projects/jindrichvosecky.webp';
 import troja from '@/public/projects/trojafotbal.webp';
-import cookbook from '@/public/projects/belamicookbook.webp';
 import valerie from '@/public/projects/valeriewendlerova.webp';
 import calorinator from '@/public/projects/calorinator.webp';
 
@@ -43,13 +42,6 @@ export default function HomePageContent({ t }: { t: Translation }) {
       href: 'https://www.jindrichvosecky.com',
       description: t.projects.jindrich.description,
       stackDesc: t.projects.jindrich.stack,
-    },
-    {
-      label: 'belamicookbook.cz',
-      image: cookbook,
-      href: 'https://www.belamicookbook.cz',
-      description: t.projects.cookbook.description,
-      stackDesc: t.projects.cookbook.stack,
     }
   ];
 
