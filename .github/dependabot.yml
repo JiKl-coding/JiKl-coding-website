@@ -1,0 +1,15 @@
+# managed by jikl-admin (scripts/setup-dependabot.mjs)
+# Jen bezpečnostní PR, všechny opravy z jednoho běhu v jednom PR. Běžné aktualizace verzí vypnuté.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns:
+          - "*"
