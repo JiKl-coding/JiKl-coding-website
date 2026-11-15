@@ -6,7 +6,7 @@ const DEFAULT_LOCALE = 'cs'
 const isLocale = (value: string | undefined): value is (typeof LOCALES)[number] =>
   !!value && (LOCALES as readonly string[]).includes(value)
 
-const middleware = (request: NextRequest) => {
+const proxy = (request: NextRequest) => {
     const { pathname } = request.nextUrl
 
     if (
@@ -32,7 +32,7 @@ const middleware = (request: NextRequest) => {
     return NextResponse.next()
   }
 
-  export default middleware
+  export default proxy
 
   export const config = {
     matcher: [

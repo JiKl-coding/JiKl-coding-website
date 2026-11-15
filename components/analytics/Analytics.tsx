@@ -1,10 +1,31 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
 // Same key + values as the former @jikl/lib CookieBar, so existing visitors keep their choice.
 const KEY = 'cookie_consent' // "true" | "false"
+
+// Consent store backed by localStorage (+ in-memory fallback for private mode)
+const listeners = new Set<() => void>()
+let memoryConsent: string | null = null
+
+const subscribe = (listener: () => void) => {
+  listeners.add(listener)
+  return () => {
+    listeners.delete(listener)
+  }
+}
+
+const getSnapshot = () => {
+  try {
+    return localStorage.getItem(KEY) ?? memoryConsent
+  } catch {
+    return memoryConsent
+  }
+}
+
+const getServerSnapshot = () => undefined // undefined = not known yet (server + hydration)
 
 type Props = {
   gaId: string
@@ -13,23 +34,16 @@ type Props = {
 
 /** Cookie consent bar + Google Analytics. GA is loaded only after the visitor accepts. */
 export function Analytics({ gaId, labels }: Props) {
-  const [consent, setConsent] = useState<string | null | undefined>(undefined) // undefined = not read yet
-
-  useEffect(() => {
-    try {
-      setConsent(localStorage.getItem(KEY))
-    } catch {
-      setConsent(null)
-    }
-  }, [])
+  const consent = useSyncExternalStore<string | null | undefined>(subscribe, getSnapshot, getServerSnapshot)
 
   const choose = (value: 'true' | 'false') => {
+    memoryConsent = value
     try {
       localStorage.setItem(KEY, value)
     } catch {
       /* private mode */
     }
-    setConsent(value)
+    listeners.forEach((listener) => listener())
   }
 
   if (!gaId) return null

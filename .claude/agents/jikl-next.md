@@ -124,12 +124,15 @@ Remember: this copy is meant to diverge and become project-specific. The pristin
 
 **Project: jikl-coding.com** — Jiří Klatovský's (JiKl-Coding) portfolio / freelance site. Full notes: [`docs/agents/jikl-next.knowledge.md`](../../docs/agents/jikl-next.knowledge.md) — **read it at session start.**
 
-- **Stack**: Next.js 15.3 App Router, React 19, TS, Tailwind v4, `next-themes`, `resend`, `react-markdown`, `next-sitemap` (postbuild), own lib `@jikl/lib` (only `CookieBar` + `GtagInitScript`). **No Supabase, no Prisma, no DB, no auth** — ignore those skills here.
-- **Routing**: `app/[locale]` (cs default, en) — not `[lang]`. `<html>` lives in `app/[locale]/layout.tsx`; root layout is a fragment. Locale redirect in `middleware.ts` (cookie `NEXT_LOCALE` → Accept-Language → cs).
-- **i18n**: one `translations = { cs, en } as const` object in `lib/i18n.ts`; client components read `useParams().locale`. Some strings are still inline `locale === 'cs' ? … : …` — move them to `lib/i18n.ts` when touched.
-- **Theming**: tokens `--background/--foreground/--link/--cookies` in `app/globals.css` (+ `.dark`), used as `bg-[var(--…)]`. No `@theme inline`, so `text-muted-foreground`, `bg-card`, `text-primary` etc. are no-ops. Signature button = border + sliding `before:` fill + `<span class="relative z-10">`.
-- **Page** = one-pager: Hero/Me → Services → Skills → Projects (`HomePageContent.tsx` `projects` array + `ProjectCard` flip card) → ContactForm (`/api/send-email` → Resend). Legal pages render `public/<locale>/docs/*.md`.
+- **Stack**: Next.js 16.4 App Router (Turbopack), React 19.3, TS 5.9, Tailwind v4, `next-themes`, `resend` 6, `react-markdown`, `next-sitemap` (postbuild). **No Supabase, no Prisma, no DB, no auth** — ignore those skills here. `@jikl/lib` was removed (own `components/analytics/Analytics.tsx` + `components/seo/JsonLd.tsx`).
+- **Majors on hold**: ESLint stays 9.x and TypeScript 5.x (Next 16 / eslint-config-next don't support ESLint 10 / TS 7 yet); `@types/node` follows Vercel's Node 22.
+- **Routing**: `app/[locale]` (cs default, en) — not `[lang]`. `<html>` lives in `app/[locale]/layout.tsx`; root layout is a fragment. Locale redirect in `proxy.ts` (Next 16 name for middleware; cookie `NEXT_LOCALE` → Accept-Language (cs/en only) → cs).
+- **i18n**: one `translations = { cs, en } as const` object in `lib/i18n.ts` (keys incl. `contactForm`, `cookieBar`, `footer`); client components read `useParams().locale`. A few inline `locale === 'cs' ? … : …` remain (ProjectCard, Header aria, ToggleButton) — move to `lib/i18n.ts` when touched.
+- **Theming**: tokens `--background/--foreground/--link/--cookies` in `app/globals.css` (+ `.dark`, set by next-themes), used as `bg-[var(--…)]`. No `@theme inline`, so `text-muted-foreground`, `bg-card`, `text-primary` etc. are no-ops. Signature button = border + sliding `before:` fill + `<span class="relative z-10">`.
+- **Page** = one-pager: Hero/Me → Services → Skills → Projects (`HomePageContent.tsx` `projects` array + `ProjectCard` flip card) → ContactForm (`/api/send-email` → validated, HTML-escaped, honeypot `website` → Resend). Legal pages render `public/<locale>/docs/*.md`.
 - **Adding a project**: webp to `public/projects/`, texts to both locales in `lib/i18n.ts`, entry in `HomePageContent.tsx`.
-- **SEO**: `lib/seo/metadata.ts` (`getLocalizedMetadata`), `lib/seo/structuredData.ts` (Person JSON-LD), `public/og-image.png`.
-- **Known bugs** (unfixed, details in knowledge file): middleware infinite redirect for non-cs/en Accept-Language; unescaped HTML in contact email; `prefers-color-scheme` media query overrides light theme.
+- **SEO**: `lib/seo/metadata.ts` (`getLocalizedMetadata`), `lib/seo/structuredData.ts` (Person JSON-LD via `<JsonLd>`), `public/og-image.png`. GA only after consent (`cookie_consent` in localStorage).
+- **Lint rules**: React-Compiler `react-hooks` rules are on — no sync `setState` in effect bodies; use `useSyncExternalStore` for browser-only values.
+- **Verify**: `npm run lint && npx tsc --noEmit && npm run build` (works directly on J: since Next 16).
+- **Windows/Claude gotcha**: never let git delete+recreate `.claude/` during a session (rebase/checkout) — the session holds a handle, the folder gets stuck delete-pending until the session ends.
 - UI language CS + EN, commit messages usually Czech. Owner merges; Vercel deploys.

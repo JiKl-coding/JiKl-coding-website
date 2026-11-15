@@ -9,14 +9,16 @@ One-page site (hero → about → services → tech-stack → projects → conta
 Repo: `github.com/JiKl-coding/JiKl-coding-website`, deployed on Vercel. Commit messages are short, mostly Czech.
 
 ## Stack (actual — differs from the template defaults)
-- Next.js **15.3.8** (App Router), React 19, TypeScript strict, Tailwind **v4** (`@import "tailwindcss"`, `@plugin "@tailwindcss/typography"`), PostCSS.
+- Next.js **16.4** (App Router, Turbopack), React 19.3, TypeScript 5.9 strict (TS 7 not supported by Next yet), Tailwind **v4** (`@import "tailwindcss"`, `@plugin "@tailwindcss/typography"`), PostCSS.
 - **No Supabase, no Prisma, no database, no auth.** Skills `nextjs-supabase` / `nextjs-prisma` are irrelevant here.
 - `next-themes` (class attribute, `defaultTheme="light"`, `enableSystem`) for dark/light.
-- `resend` for the contact form email. `react-markdown` for legal pages. `react-icons`, `clsx`, `cookies-next` (installed, unused).
+- `resend` 6 for the contact form email. `react-markdown` for legal pages. `react-icons`, `clsx`.
 - `@jikl/lib` was **removed 2026-11-15** (replaced per `nextjs-seo` §6). GA + consent bar = `components/analytics/Analytics.tsx` (server env `GA_TRACKING_ID` passed as `gaId` prop, labels from `translations.*.cookieBar`; localStorage key `cookie_consent` = `"true"`/`"false"` kept from the old lib; GA script loads only after accept — no Consent Mode). JSON-LD rendered via `components/seo/JsonLd.tsx` (escapes `<`).
 - `next-sitemap` runs on `postbuild` and writes `public/sitemap.xml`, `public/sitemap-0.xml`, `public/robots.txt` (these are committed, regenerated on every build).
 - Font: JetBrains Mono via `next/font/google` → `--font-jetbrains`, monospace everywhere.
-- Scripts: `npm run dev | build | start | lint` (`next lint`). No tests.
+- Scripts: `npm run dev | build | start | lint` (`eslint .` — `next lint` no longer exists in Next 16). No tests. Verify with `npm run lint && npx tsc --noEmit && npm run build`.
+- ESLint 9 (latest 9.x; ESLint 10 not supported by eslint-config-next yet) with native flat config `eslint.config.mjs` (`eslint-config-next/core-web-vitals` + `/typescript`, ignores `scripts/**`). It includes the React-Compiler `react-hooks` rules: no synchronous `setState` in an effect body → use `useSyncExternalStore` for client-only/browser values (see `ToggleButton` mounted flag, `Analytics` consent store).
+- `@types/node` ^22 = Node 22 on Vercel (Next 16 needs Node ≥ 20.9).
 
 ## Layout
 ```
@@ -33,7 +35,7 @@ lib/i18n.ts                    single `translations = { cs, en } as const` objec
 lib/seo/metadata.ts            getLocalizedMetadata(locale) — title/desc/keywords/OG/Twitter/canonical/alternates; hardcoded SERVER_URL
 lib/seo/structuredData.ts      getPersonStructuredData(locale) — Person JSON-LD
 lib/constants/index.ts         APP_NAME / APP_DESCRIPTION / SERVER_URL from NEXT_PUBLIC_* env
-middleware.ts                  locale redirect (cookie NEXT_LOCALE → Accept-Language → 'cs')
+proxy.ts                       (Next 16 name for middleware) locale redirect (cookie NEXT_LOCALE → Accept-Language → 'cs')
 public/jikl.webp (hero), public/projects/*.webp, public/og-image.png
 ```
 
@@ -64,12 +66,14 @@ Removing a project = reverse: delete the image, the i18n keys in both locales an
 `NEXT_PUBLIC_APP_NAME`, `NEXT_PUBLIC_APP_DESCRIPTION`, `NEXT_PUBLIC_SERVER_URL`, `RESEND_API_KEY`, `RESEND_FROM`, `RESEND_TO`, `GA_TRACKING_ID`.
 
 ## Build on Windows: drive J: is exFAT
-`next build` fails on J: with `EISDIR: illegal operation on a directory, readlink '…route.ts'` (webpack + exFAT). Not a code bug — build from an NTFS copy:
-`robocopy <project> <scratchpad>uild /MIR /XD .git .next .claude` then `npm run lint` / `npm run build` there. (`next build` on Vercel is fine.)
+Since Next 16 (Turbopack) `npm run build` works directly on J:. Under Next 15 (webpack) it failed with `EISDIR: illegal operation on a directory, readlink '…'` (webpack + exFAT) — if a webpack build is ever needed again, build from an NTFS copy (`robocopy <project> <scratchpad>\build /MIR /XD .git .next .claude`).
 Pages are SSG → rendered HTML is in `.next/server/app/{cs,en,…}.html` (handy for comparing `<head>`).
 
 ## Claude Code gotcha
 Git operations that delete+recreate `.claude/` (rebase, checkout across commits adding it) fail with *Permission denied* while a Claude Code session is running — the session holds a handle on `.claude/`, Windows leaves it delete-pending. Avoid touching `.claude/` via git during a session; if it happens, restart the session and run `git checkout -- .claude`.
+
+## Upgraded 2026-11-15
+Next 15.3 → 16.4.5, eslint-config-next 16, resend 4 → 6, React 19.3, Tailwind 4.3, TS 5.9, eslint 9.39; removed `cookies-next`, `@eslint/eslintrc`. Lockfile resolved with `--before` (7-day cutoff). Remaining `npm audit`: 9 moderate, dev-tooling only (typescript-eslint → minimatch, no upstream fix yet; `@tailwindcss/typography` pins `postcss-selector-parser` 6.0.10) — not exploitable here, no overrides added.
 
 ## Fixed 2026-11-15
 Middleware redirect loop for non-cs/en Accept-Language (now validated + exact `/cs` or `/cs/` prefix match); HTML injection / no validation in send-email; dark media query overriding light theme; stale cookbook image + i18n keys; hardcoded Footer/ContactForm/Services/cookie strings → i18n.

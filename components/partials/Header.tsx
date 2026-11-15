@@ -23,9 +23,8 @@ const Header = () => {
     { id: 'contact', label: t.nav.contact },
   ]
 
-  const resetVisibilityTimer = useCallback(() => {
-    setIsVisible(true)
-
+  // Hides the header after 3 s of inactivity (not while the mobile menu is open)
+  const scheduleHide = useCallback(() => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
       timeoutRef.current = null
@@ -40,13 +39,14 @@ const Header = () => {
 
   useEffect(() => {
     const onInteraction = () => {
-      resetVisibilityTimer()
+      setIsVisible(true)
+      scheduleHide()
     }
 
     document.addEventListener('scroll', onInteraction)
     document.addEventListener('click', onInteraction)
 
-    resetVisibilityTimer()
+    scheduleHide()
 
     return () => {
       document.removeEventListener('scroll', onInteraction)
@@ -56,7 +56,7 @@ const Header = () => {
         clearTimeout(timeoutRef.current)
       }
     }
-  }, [resetVisibilityTimer])
+  }, [scheduleHide])
 
   return (
     <header

@@ -2,24 +2,23 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 
 type Props = {
   locale: string
 }
+
+const noopSubscribe = () => () => {}
 
 const ToggleButton = ({ locale }: Props) => {
   const pathname = usePathname()
   const router = useRouter()
   const { theme, setTheme } = useTheme()
 
-  const [mounted, setMounted] = useState(false)
+  // false on the server + during hydration, true on the client afterwards (theme is only known client-side)
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false)
   const [hoverLang, setHoverLang] = useState(false)
   const [hoverTheme, setHoverTheme] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   const toggleLang = () => {
     const newLocale = locale === 'cs' ? 'en' : 'cs'
