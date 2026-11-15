@@ -34,6 +34,7 @@ export const translations = {
         "🔄 Dlouhodobá správa a rozvoj webů i aplikací",
         "📞 Úvodní konzultace zdarma"
       ],
+      cta: "Domluvit konzultaci",
       contactNote: "Sídlím v Praze, spolupráci však nabízím i plně na dálku. V případě zájmu mě prosím kontaktujte – rád s Vámi nezávazně prodiskutuji Vaše potřeby."
     },
     projects: {
@@ -49,20 +50,30 @@ export const translations = {
         description: "Webová stránka vynikajícího umělce Jindry Voseckého napsaná v JS, HTML a CSS.",
         stack: "HTML, CSS, Vanilla JS, jQuery...",
       },
-      cookbook: {
-        description: "Moje webová kuchařka napsaná jako projekt pro radost. Rád totiž vařím.",
-        stack: "HTML, CSS, Vanilla JS...",
-      },
       valerie: {
         description: "Webová stránka výživářky a fitness trenérky Valerie, prezentující její služby.",
         stack: "Next.js, React, Tailwind CSS, TypeScript...",
       }
     },
     contact: "kontakt",
+    contactForm: {
+      name: "Jméno",
+      email: "Email",
+      message: "Zpráva",
+      send: "Odeslat",
+      sending: "Odesílání…",
+      sent: "Zpráva odeslána ✔",
+      error: "Chyba při odesílání ✖",
+    },
+    cookieBar: {
+      message: "K analýze návštěvnosti využívám službu Google Analytics. Cookies ukládám jen s vaším souhlasem.",
+      accept: "Souhlasím",
+      deny: "Odmítám",
+    },
     footer: {
       rights: "Všechna práva vyhrazena.",
       terms: "Obchodní podmínky",
-      cookies: "Tato stránka nevyužívá soubory cookies",
+      privacy: "Ochrana osobních údajů",
       address: "Sídlo",
       tradeRegister: "Zapsán v živnostenském rejstříku vedeném ÚMČ Praha 13",
       vat: "Nejsem plátcem DPH",
@@ -103,6 +114,7 @@ export const translations = {
         "🔄 Ongoing maintenance and updates",
         "📞 Free initial consultation"
       ],
+    cta: "Get a consultation",
     contactNote: "Based in Prague, but fully available for remote projects as well. If interested, feel free to get in touch – I will be happy to discuss your needs with you."
   },
     projects: {
@@ -118,20 +130,30 @@ export const translations = {
         description: "Website of the great artist Jindřich Vosecký built using JS, HTML, and CSS.",
         stack: "HTML, CSS, Vanilla JS, jQuery...",
       },
-      cookbook: {
-        description: "My personal cooking website created as a fun project. I simply love to cook.",
-        stack: "HTML, CSS, Vanilla JS...",
-      },
       valerie: {
         description: "Website of the nutritionist and fitness trainer Valerie, showcasing her services.",
         stack: "Next.js, React, Tailwind CSS, TypeScript...",
       }
     },
     contact: "contact",
+    contactForm: {
+      name: "Name",
+      email: "Email",
+      message: "Message",
+      send: "Send",
+      sending: "Sending…",
+      sent: "Message sent ✔",
+      error: "Sending failed ✖",
+    },
+    cookieBar: {
+      message: "I use Google Analytics to analyze traffic. Cookies are only stored with your consent.",
+      accept: "I agree",
+      deny: "I decline",
+    },
     footer: {
       rights: "All rights reserved.",
       terms: "Terms of Service",
-      cookies: "This website does not use cookies",
+      privacy: "Privacy Policy",
       address: "Registered office",
       tradeRegister: "Registered in the Trade Register maintained by Prague 13 District Office",
       vat: "Not a VAT payer",

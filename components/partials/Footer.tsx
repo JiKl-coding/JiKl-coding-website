@@ -64,7 +64,7 @@ const Footer = ({ locale }: { locale: "cs" | "en" }) => {
 
             rel="noopener noreferrer"
           >
-            {locale === "cs" ? "Obchodní podmínky" : "Terms of Service"}
+            {t.footer.terms}
           </Link>
 
           <Link
@@ -73,7 +73,7 @@ const Footer = ({ locale }: { locale: "cs" | "en" }) => {
 
             rel="noopener noreferrer"
           >
-            {locale === "cs" ? "Ochrana osobních údajů" : "Privacy Policy"}
+            {t.footer.privacy}
           </Link>
         </div>
 
@@ -82,13 +82,11 @@ const Footer = ({ locale }: { locale: "cs" | "en" }) => {
         <div className="flex flex-col gap-1 text-center md:text-right">
           <p><strong>Jiří Klatovský</strong></p>
           <p><strong>IČO:</strong> 23307421</p>
-          <p><strong>{locale === "cs" ? "Sídlo" : "Registered office"}:</strong> V Hůrkách 2145/1, 158 00, Praha 5 – Stodůlky</p>
+          <p><strong>{t.footer.address}:</strong> V Hůrkách 2145/1, 158 00, Praha 5 – Stodůlky</p>
           <p>
-            {locale === "cs"
-              ? "Zapsán v živnostenském rejstříku vedeném ÚMČ Praha 13"
-              : "Registered in the Trade Register maintained by Prague 13 District Office"}
+            {t.footer.tradeRegister}
           </p>
-          <p>{locale === "cs" ? "Nejsem plátcem DPH" : "Not a VAT payer"}</p>
+          <p>{t.footer.vat}</p>
         </div>
       </div>
     </footer>

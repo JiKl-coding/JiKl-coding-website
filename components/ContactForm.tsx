@@ -8,7 +8,7 @@ export default function ContactForm() {
   const { locale } = useParams()
   const t = translations[locale as 'cs' | 'en'] ?? translations.cs
 
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', message: '', website: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -41,7 +41,7 @@ export default function ContactForm() {
         <input
           type="text"
           name="name"
-          placeholder={locale === 'cs' ? 'Jméno' : 'Name'}
+          placeholder={t.contactForm.name}
           value={form.name}
           onChange={handleChange}
           required
@@ -50,7 +50,7 @@ export default function ContactForm() {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={t.contactForm.email}
           value={form.email}
           onChange={handleChange}
           required
@@ -58,12 +58,23 @@ export default function ContactForm() {
         />
         <textarea
           name="message"
-          placeholder={locale === 'cs' ? 'Zpráva' : 'Message'}
+          placeholder={t.contactForm.message}
           value={form.message}
           onChange={handleChange}
           required
           rows={5}
           className="p-3 rounded border border-[var(--foreground)]/90"
+        />
+        {/* Honeypot – hidden from people, bots fill it in */}
+        <input
+          type="text"
+          name="website"
+          value={form.website}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="hidden"
         />
         <button
           type="submit"
@@ -74,11 +85,11 @@ export default function ContactForm() {
           disabled={status === 'sending'}
         >
           <span className="relative z-10">
-            {status === 'sending' ? (locale === 'cs' ? 'Odesílání…' : 'Sending…') : (locale === 'cs' ? 'Odeslat' : 'Send')}
+            {status === 'sending' ? t.contactForm.sending : t.contactForm.send}
           </span>
         </button>
-        {status === 'sent' && <p className="text-[var(--link)] text-center">{locale === 'cs' ? 'Zpráva odeslána ✔' : 'Message sent ✔'}</p>}
-        {status === 'error' && <p className="text-[var(--link)] text-center">{locale === 'cs' ? 'Chyba při odesílání ✖' : 'Sending failed ✖'}</p>}
+        {status === 'sent' && <p className="text-[var(--link)] text-center">{t.contactForm.sent}</p>}
+        {status === 'error' && <p className="text-[var(--link)] text-center">{t.contactForm.error}</p>}
       </form>
     </section>
   )

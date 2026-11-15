@@ -69,7 +69,7 @@ const ServicesSection = () => {
                      hover:text-[var(--foreground)] hover:border-[var(--foreground)]"
         >
           <span className="relative z-10">
-            {locale === 'en' ? 'Get a consultation' : 'Domluvit konzultaci'}
+            {t.cta}
           </span>
         </a>
       </div>

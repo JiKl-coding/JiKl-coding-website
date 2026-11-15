@@ -13,7 +13,7 @@ Repo: `github.com/JiKl-coding/JiKl-coding-website`, deployed on Vercel. Commit m
 - **No Supabase, no Prisma, no database, no auth.** Skills `nextjs-supabase` / `nextjs-prisma` are irrelevant here.
 - `next-themes` (class attribute, `defaultTheme="light"`, `enableSystem`) for dark/light.
 - `resend` for the contact form email. `react-markdown` for legal pages. `react-icons`, `clsx`, `cookies-next` (installed, unused).
-- `@jikl/lib` (`github:JiKl-coding/jikl-lib`, own library) — only `CookieBar` + `GtagInitScript` are used (GA consent). The `nextjs-seo` skill describes replacing it with project code — do only when asked.
+- `@jikl/lib` was **removed 2026-11-15** (replaced per `nextjs-seo` §6). GA + consent bar = `components/analytics/Analytics.tsx` (server env `GA_TRACKING_ID` passed as `gaId` prop, labels from `translations.*.cookieBar`; localStorage key `cookie_consent` = `"true"`/`"false"` kept from the old lib; GA script loads only after accept — no Consent Mode). JSON-LD rendered via `components/seo/JsonLd.tsx` (escapes `<`).
 - `next-sitemap` runs on `postbuild` and writes `public/sitemap.xml`, `public/sitemap-0.xml`, `public/robots.txt` (these are committed, regenerated on every build).
 - Font: JetBrains Mono via `next/font/google` → `--font-jetbrains`, monospace everywhere.
 - Scripts: `npm run dev | build | start | lint` (`next lint`). No tests.
@@ -21,11 +21,11 @@ Repo: `github.com/JiKl-coding/JiKl-coding-website`, deployed on Vercel. Commit m
 ## Layout
 ```
 app/layout.tsx                 root: only `metadata` (from lib/constants env) + returns <>{children}</> (no <html>!)
-app/[locale]/layout.tsx        real <html lang>/<body>, ThemeProvider, Header, Footer, CookieBar, GtagInitScript, Person JSON-LD; generateStaticParams cs/en; notFound for others
+app/[locale]/layout.tsx        real <html lang>/<body>, ThemeProvider, Header, Footer, <Analytics>, <JsonLd> Person; generateStaticParams cs/en; notFound for others
 app/[locale]/page.tsx          → <HomePageContent t={translations[locale]} />
 app/[locale]/privacy-policy    reads public/<locale>/docs/{gdpr|privacy-policy}.md via fs, renders with ReactMarkdown in .prose
 app/[locale]/terms-of-service  reads public/<locale>/docs/{obchodni-podminky|terms-of-service}.md
-app/api/send-email/route.ts    POST {name,email,message} → Resend (RESEND_FROM → RESEND_TO, replyTo = sender)
+app/api/send-email/route.ts    POST {name,email,message,website(honeypot)} → validate + escapeHtml → Resend (RESEND_FROM → RESEND_TO, replyTo = sender); checks Resend's `{ error }` result
 components/HomePageContent.tsx server; holds the `projects` array (label, image import, href, layout flag, i18n texts) + sr-only SEO text
 components/{Hero,Me,Services,Skills}Section.tsx, ProjectCard.tsx (3D flip card), ContactForm.tsx
 components/partials/{Header,Footer,HeaderToggle,ToggleButton}.tsx
@@ -41,11 +41,10 @@ public/jikl.webp (hero), public/projects/*.webp, public/og-image.png
 - Route segment is **`[locale]`** (not `[lang]`), locales `cs` (default) / `en`, type is just `"cs" | "en"` repeated inline.
 - Client components read the locale via `useParams()` and index `translations[locale] ?? translations.cs` directly.
 - Language switch (`ToggleButton`): sets `NEXT_LOCALE` cookie + localStorage `lang`, `router.push` to swapped prefix.
-- Many strings are still inline ternaries `locale === 'cs' ? … : …` (ContactForm, Footer, ServicesSection button, ProjectCard "Klikni na mě", Header aria-labels, cookie texts in layout). When touching them, prefer moving into `lib/i18n.ts`.
-- `translations.*.footer.*` keys exist but Footer mostly ignores them (only `rights` is used); `projects.cookbook` and `footer.cookies` are stale.
+- Keys: hero, about, nav, services (+`cta`), projects, contact, contactForm, cookieBar, footer (+`privacy`). Remaining inline ternaries `locale === 'cs' ? … : …`: ProjectCard "Klikni na mě", Header aria-labels, ToggleButton cze/eng — move into `lib/i18n.ts` when touched.
 
 ## Theming (project-specific)
-- Tokens in `app/globals.css`: `--background`, `--foreground`, `--link`, `--cookies`; `.dark` overrides. Used as `bg-[var(--background)]` etc.
+- Tokens in `app/globals.css`: `--background`, `--foreground`, `--link`, `--cookies`; `.dark` overrides (next-themes class). No `prefers-color-scheme` media query (removed — it broke the light theme for dark-OS users). Used as `bg-[var(--background)]` etc.
 - There is **no `@theme inline` mapping**, so classes like `text-muted-foreground`, `bg-card`, `border-border`, `text-primary`, `bg-background` used in components are **no-ops**.
 - Hardcoded colors still exist (`text-white`, `text-gray-200`, `bg-black/15`, `shadow-gray-500/40`, SkillsSection `bg-white dark:bg-gray-800 text-gray-900 dark:text-white`).
 - Theme toggle writes `THEME` cookie + localStorage, but next-themes itself drives the class.
@@ -59,16 +58,24 @@ public/jikl.webp (hero), public/projects/*.webp, public/og-image.png
 2. `lib/i18n.ts`: add `projects.<key>.{description, stack}` in **both** cs and en.
 3. `components/HomePageContent.tsx`: import image, add entry to `projects` (alternate `layout: false` for zig-zag; new items usually go to the top).
 4. Optionally add the name to `keywords` in `lib/seo/metadata.ts`.
-Removing a project = reverse (and delete the image + i18n keys — last removal of belami cookbook left the image + `projects.cookbook` keys behind).
+Removing a project = reverse: delete the image, the i18n keys in both locales and the array entry.
 
 ## Env vars (`.env`, gitignored; same set on Vercel)
 `NEXT_PUBLIC_APP_NAME`, `NEXT_PUBLIC_APP_DESCRIPTION`, `NEXT_PUBLIC_SERVER_URL`, `RESEND_API_KEY`, `RESEND_FROM`, `RESEND_TO`, `GA_TRACKING_ID`.
 
-## Known issues / gotchas (found 2026-11-15, not yet fixed)
-- **Middleware redirect loop**: a visitor without the `NEXT_LOCALE` cookie whose browser's first Accept-Language is not cs/en (e.g. `de-DE`) gets redirected to `/de/…`, which again "misses a locale" → `/de/de/…` → infinite redirect. Fix: only accept the header value if it is in `['cs','en']`. Also `startsWith('/cs')` matches e.g. `/csfoo`.
-- **API route HTML injection**: `name`/`message` are interpolated into the email HTML unescaped; no type/length validation, no rate limit / spam protection.
-- `globals.css` `@media (prefers-color-scheme: dark) :root {…}` overrides the light tokens for dark-OS users even when the "light" theme is selected (no `.light` block).
-- `globals.css` is imported in both `app/layout.tsx` and `app/[locale]/layout.tsx`; root `metadata` (env-based) and `getLocalizedMetadata` (hardcoded URL) duplicate each other.
-- Legal `.md` files sit in `public/`, so they are also served raw at `/cs/docs/gdpr.md` etc. Legal texts are dated — update dates when editing them (see commit `cadf5b1`).
-- `.claude/`, `.github/` (Copilot mirror of agent + skills, `jikl-agents.lock.json`) and `scripts/agent-converter/` were imported 2026-11-15 and are still untracked. No `.github/dependabot.yml` / `claude.yml` yet → `jikl-project-ops` not done.
-- `.claude/agents/jikl-next.md` ↔ `.github/agents/jikl-next.agent.md` are kept in sync with `node scripts/agent-converter/agent-convert.mjs --from claude --to copilot`.
+## Build on Windows: drive J: is exFAT
+`next build` fails on J: with `EISDIR: illegal operation on a directory, readlink '…route.ts'` (webpack + exFAT). Not a code bug — build from an NTFS copy:
+`robocopy <project> <scratchpad>uild /MIR /XD .git .next .claude` then `npm run lint` / `npm run build` there. (`next build` on Vercel is fine.)
+Pages are SSG → rendered HTML is in `.next/server/app/{cs,en,…}.html` (handy for comparing `<head>`).
+
+## Claude Code gotcha
+Git operations that delete+recreate `.claude/` (rebase, checkout across commits adding it) fail with *Permission denied* while a Claude Code session is running — the session holds a handle on `.claude/`, Windows leaves it delete-pending. Avoid touching `.claude/` via git during a session; if it happens, restart the session and run `git checkout -- .claude`.
+
+## Fixed 2026-11-15
+Middleware redirect loop for non-cs/en Accept-Language (now validated + exact `/cs` or `/cs/` prefix match); HTML injection / no validation in send-email; dark media query overriding light theme; stale cookbook image + i18n keys; hardcoded Footer/ContactForm/Services/cookie strings → i18n.
+
+## Remaining notes
+- `globals.css` is imported in both `app/layout.tsx` and `app/[locale]/layout.tsx`; root `metadata` (env-based) and `getLocalizedMetadata` (hardcoded `https://jikl-coding.com`) duplicate each other.
+- Legal `.md` files sit in `public/`, so they are also served raw at `/cs/docs/gdpr.md` etc. Legal texts are dated — update dates when editing them (see commit `cadf5b1`). Privacy texts mention GA consent — keep in sync with `Analytics.tsx`.
+- No way to change the cookie choice later yet (could add a footer link that clears `cookie_consent`).
+- `.github/` = Copilot mirror of agent + skills (`jikl-agents.lock.json`), plus `dependabot.yml` + `workflows/claude.yml` (jikl-admin, added on remote). Sync agent: `node scripts/agent-converter/agent-convert.mjs --from claude --to copilot`.
