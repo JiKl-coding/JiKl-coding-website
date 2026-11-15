@@ -1,0 +1,19 @@
+{
+  "$comment": "Managed by jikl-agents-import. The upstream version (normalized content hash) each agent/skill file is based on – lets `update` tell your project-specific edits from upstream changes. Commit this file.",
+  "source": "https://github.com/JiKl-coding/jikl-agents-import.git",
+  "ref": null,
+  "commit": null,
+  "updatedAt": "2026-11-15",
+  "files": {
+    ".github/agents/jikl-next.agent.md": "0792b7b29b5d4963",
+    ".github/skills/jikl-dependency-updates/SKILL.md": "8ed175661b2de576",
+    ".github/skills/jikl-new-project/SKILL.md": "11c84a3450c050dc",
+    ".github/skills/jikl-project-ops/SKILL.md": "a3c563e60579e2a7",
+    ".github/skills/nextjs-i18n/SKILL.md": "356ea4e0026772eb",
+    ".github/skills/nextjs-prisma/SKILL.md": "0852ee7f4933b035",
+    ".github/skills/nextjs-project-structure/SKILL.md": "5e8f597a233590cb",
+    ".github/skills/nextjs-seo/SKILL.md": "3ec9831f49f8ec5f",
+    ".github/skills/nextjs-supabase/SKILL.md": "67db70e3171138ff",
+    ".github/skills/nextjs-theming/SKILL.md": "86ccfa0e835c53c2"
+  }
+}
